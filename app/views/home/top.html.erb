@@ -2,3 +2,30 @@
 <p>Find me in app/views/home/top.html.erb</p>
 <h1>メッセージ</h1>
 <p><%= @greeting_message %></p>
+
+
+<h1>合計計算</h1>
+
+<!-- 入力フォーム -->
+<%= form_with url: root_path, method: :get, local: true do |form| %>
+  <div>
+    <%= form.label :value1, "値1：" %>
+    <%= form.text_field :value1, value: params[:value1] %>
+  </div>
+
+  <div>
+    <%= form.label :value2, "値2：" %>
+    <%= form.text_field :value2, value: params[:value2] %>
+  </div>
+
+  <div>
+    <%= form.submit "計算する" %>
+  </div>
+<% end %>
+
+<!-- 結果の表示 -->
+<% if @result %>
+  <h2>計算結果: <%= @result %></h2>
+<% elsif params[:value1].present? || params[:value2].present? %>
+  <p>正しい値を入力してください。</p>
+<% end %>
