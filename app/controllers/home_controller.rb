@@ -17,5 +17,10 @@ class HomeController < ApplicationController
       @result = nil # 入力がない場合は結果を表示しない
     end
   end
+
+  def show
+  end
+
 end
+
 
